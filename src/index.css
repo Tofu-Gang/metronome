@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@source inline("duration-{200..1500..1}");
 
 body {
     @apply bg-[#00191b];
