@@ -1,5 +1,5 @@
 import trapezoid from "../assets/lichoblběžník.png";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 // https://justinmahar.github.io/react-use-precision-timer/?path=/docs/home--docs
 import { useTimer } from "react-use-precision-timer";
 import plusIcon from "../icons/plus.jsx";
@@ -18,6 +18,16 @@ function Metronome() {
     const [isRunning, setRunning] = useState(false);
     const [bpm, setBpm] = useState(80);
     const [playActive] = useSound(clickSound);
+    const [leftDotHidden, setLeftDotHidden] = useState(false);
+    const [rightDotHidden, setRightDotHidden] = useState(false);
+
+    function blinkDot() {
+        const dotHiddenLookup = [setRightDotHidden, setLeftDotHidden];
+        dotHiddenLookup[armPositionIndex]((current) => !current);
+        setTimeout(() => dotHiddenLookup[armPositionIndex]((current) => !current), 50);
+    }
+
+    useEffect(blinkDot, [armPositionIndex]);
 
     const callback = useCallback(() => {
         setArmPositionIndex((current) => (current + 1) % 2);
@@ -52,6 +62,12 @@ function Metronome() {
                     origin-bottom rounded-xl mb-1 ${isRunning ? armPositionLookup[armPositionIndex] : ""} 
                     transition duration-${Math.floor(60000 / bpm)} ease-linear`}
                 ></div>
+                <div
+                    className={`absolute top-[calc(50%-75px)] left-[calc(50%-230px)] w-3.5 h-3.5 bg-[#e4f876] rounded ${leftDotHidden ? "hidden" : ""}`}>
+                </div>
+                <div
+                    className={`absolute top-[calc(50%-75px)] left-[calc(50%+230px)] w-3.5 h-3.5 bg-[#e4f876] rounded ${rightDotHidden ? "hidden" : ""}`}>
+                </div>
             </div>
             <div className="flex justify-center fixed bottom-2 inset-x-0 mx-auto">
                 <button
