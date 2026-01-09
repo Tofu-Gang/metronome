@@ -12,6 +12,7 @@ import pauseIcon from "../icons/pause.jsx";
 import useSound from 'use-sound';
 import clickSound from "../assets/click.mp3";
 import BpmButton from "./BpmButton.jsx";
+import Dot from "./Dot.jsx";
 
 function Metronome() {
     const armPositionLookup = ["-rotate-30", "rotate-30"];
@@ -70,12 +71,8 @@ function Metronome() {
                     origin-bottom rounded-xl mb-1 ${isRunning ? armPositionLookup[armPositionIndex] : ""} 
                     transition duration-${Math.floor(60000 / bpm)} ease-linear`}
                 ></div>
-                <div
-                    className={`absolute top-[calc(50%-75px)] left-[calc(50%-230px)] w-3.5 h-3.5 bg-[#e4f876] rounded ${leftDotHidden ? "hidden" : ""}`}>
-                </div>
-                <div
-                    className={`absolute top-[calc(50%-75px)] left-[calc(50%+230px)] w-3.5 h-3.5 bg-[#e4f876] rounded ${rightDotHidden ? "hidden" : ""}`}>
-                </div>
+                <Dot leftMargin={"calc(50%-230px)"} hidden={leftDotHidden} />
+                <Dot leftMargin={"calc(50%+230px)"} hidden={rightDotHidden} />
             </div>
             <div className="flex justify-center fixed bottom-2 inset-x-0 mx-auto">
                 <BpmButton onClick={() => changeBpm(-10)} icon={fasterMinusIcon} />
@@ -84,7 +81,7 @@ function Metronome() {
                     className="cursor-pointer border-5 border-[#e4f876] rounded-full w-20 h-20 flex justify-center items-center"
                     onClick={toggleTimer}
                 >
-                    {isRunning ? pauseIcon : playIcon}︎
+                    {isRunning ? pauseIcon : playIcon}
                 </button>
                 <BpmButton onClick={() => changeBpm(1)} icon={plusIcon} />
                 <BpmButton onClick={() => changeBpm(10)} icon={fasterPlusIcon} />
