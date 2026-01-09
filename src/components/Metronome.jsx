@@ -28,11 +28,9 @@ function Metronome() {
     }
 
     useEffect(blinkDot, [armPositionIndex]);
+    useEffect(playActive, [armPositionIndex]);
 
-    const callback = useCallback(() => {
-        setArmPositionIndex((current) => (current + 1) % 2);
-        playActive();
-    }, []);
+    const callback = useCallback(() => setArmPositionIndex((current) => (current + 1) % 2), []);
     const timer = useTimer({delay: 60000 / bpm}, callback);
 
     function startTimer() {
