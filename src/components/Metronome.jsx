@@ -11,6 +11,7 @@ import pauseIcon from "../icons/pause.jsx";
 // https://www.joshwcomeau.com/react/announcing-use-sound-react-hook/
 import useSound from 'use-sound';
 import clickSound from "../assets/click.mp3";
+import BpmButton from "./BpmButton.jsx";
 
 function Metronome() {
     const armPositionLookup = ["-rotate-30", "rotate-30"];
@@ -50,6 +51,15 @@ function Metronome() {
         setRunning((current) => !current);
     }
 
+    function changeBpm(delta) {
+        setBpm((current) => current + delta);
+
+        if(isRunning) {
+            clearTimer();
+            startTimer();
+        }
+    }
+
     return (
         <>
             <div className="fixed bottom-22 inset-x-0 mx-auto max-w-lg">
@@ -68,52 +78,16 @@ function Metronome() {
                 </div>
             </div>
             <div className="flex justify-center fixed bottom-2 inset-x-0 mx-auto">
-                <button
-                    className="cursor-pointer border-5 border-[#e4f876] rounded-full w-20 h-20 flex justify-center items-center"
-                    onClick={() => {
-                        setBpm((current) => current - 10);
-                        clearTimer();
-                        startTimer();
-                    }}
-                >
-                    {fasterMinusIcon}
-                </button>
-                <button
-                    className="cursor-pointer border-5 border-[#e4f876] rounded-full w-20 h-20 flex justify-center items-center"
-                    onClick={() => {
-                        setBpm((current) => current - 1);
-                        clearTimer();
-                        startTimer();
-                    }}
-                >
-                    {minusIcon}
-                </button>
+                <BpmButton onClick={() => changeBpm(-10)} icon={fasterMinusIcon} />
+                <BpmButton onClick={() => changeBpm(-1)} icon={minusIcon} />
                 <button
                     className="cursor-pointer border-5 border-[#e4f876] rounded-full w-20 h-20 flex justify-center items-center"
                     onClick={toggleTimer}
                 >
                     {isRunning ? pauseIcon : playIcon}︎
                 </button>
-                <button
-                    className="cursor-pointer border-5 border-[#e4f876] rounded-full w-20 h-20 flex justify-center items-center"
-                    onClick={() => {
-                        setBpm((current) => current + 1);
-                        clearTimer();
-                        startTimer();
-                    }}
-                >
-                    {plusIcon}
-                </button>
-                <button
-                    className="cursor-pointer border-5 border-[#e4f876] rounded-full w-20 h-20 flex justify-center items-center"
-                    onClick={() => {
-                        setBpm((current) => current + 10);
-                        clearTimer();
-                        startTimer();
-                    }}
-                >
-                    {fasterPlusIcon}
-                </button>
+                <BpmButton onClick={() => changeBpm(1)} icon={plusIcon} />
+                <BpmButton onClick={() => changeBpm(10)} icon={fasterPlusIcon} />
             </div>
         </>
     );
