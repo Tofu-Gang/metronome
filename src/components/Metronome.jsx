@@ -8,14 +8,21 @@ import minusIcon from "../icons/minus.jsx";
 import fasterMinusIcon from "../icons/fasterMinus.jsx";
 import playIcon from "../icons/play.jsx";
 import pauseIcon from "../icons/pause.jsx";
+// https://www.joshwcomeau.com/react/announcing-use-sound-react-hook/
+import useSound from 'use-sound';
+import clickSound from "../assets/click.mp3";
 
 function Metronome() {
     const armPositionLookup = ["-rotate-30", "rotate-30"];
     const [armPositionIndex, setArmPositionIndex] = useState(0);
     const [isRunning, setRunning] = useState(false);
     const [bpm, setBpm] = useState(80);
+    const [playActive] = useSound(clickSound);
 
-    const callback = useCallback(() => setArmPositionIndex((current) => (current + 1) % 2), []);
+    const callback = useCallback(() => {
+        setArmPositionIndex((current) => (current + 1) % 2);
+        playActive();
+    }, []);
     const timer = useTimer({delay: 60000 / bpm}, callback);
 
     function startTimer() {
@@ -43,7 +50,7 @@ function Metronome() {
                 <div
                     className={`fixed bottom-22 inset-x-0 mx-auto inline-block w-3.5 h-112.5 bg-[#e4f876] 
                     origin-bottom rounded-xl mb-1 ${isRunning ? armPositionLookup[armPositionIndex] : ""} 
-                    transition duration-${Math.floor(60000 / bpm)} linear`}
+                    transition duration-${Math.floor(60000 / bpm)} ease-linear`}
                 ></div>
             </div>
             <div className="flex justify-center fixed bottom-2 inset-x-0 mx-auto">
