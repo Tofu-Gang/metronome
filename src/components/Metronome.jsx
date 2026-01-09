@@ -37,8 +37,8 @@ function Metronome() {
 
     return (
         <>
-            <div className="fixed bottom-22 inset-x-0 mx-auto max-w-lg text-[#e4f876] font-[Rubik]">
-                <h1 className="text-9xl text-center">{bpm}</h1>
+            <div className="fixed bottom-22 inset-x-0 mx-auto max-w-lg">
+                <h1 className="text-9xl text-center text-[#e4f876] font-[Rubik]">{bpm}</h1>
                 <img src={trapezoid} alt="An's trapezoid"/>
                 <div
                     className={`fixed bottom-22 inset-x-0 mx-auto inline-block w-3.5 h-112.5 bg-[#e4f876] 
@@ -46,57 +46,54 @@ function Metronome() {
                     transition duration-${Math.floor(60000 / bpm)} linear`}
                 ></div>
             </div>
-            <button
-                className="fixed bottom-2 inset-x-0 left-170 cursor-pointer border-5 border-[#e4f876] rounded-full
-                w-20 h-20 flex justify-center items-center text-5xl"
-                onClick={() => {
-                    setBpm((current) => current + 1);
-                    clearTimer();
-                    startTimer();
-                }}
-            >
-                {plusIcon}
-            </button>
-            <button
-                className="fixed bottom-2 inset-x-0 left-192 cursor-pointer border-5 border-[#e4f876] rounded-full
-                w-20 h-20 flex justify-center items-center text-5xl"
-                onClick={() => {
-                    setBpm((current) => current + 10);
-                    clearTimer();
-                    startTimer();
-                }}
-            >
-                {fasterPlusIcon}
-            </button>
-            <button
-                className="fixed bottom-2 inset-x-0 left-126 cursor-pointer border-5 border-[#e4f876] rounded-full
-                w-20 h-20 flex justify-center items-center text-5xl"
-                onClick={() => {
-                    setBpm((current) => current - 1);
-                    clearTimer();
-                    startTimer();
-                }}
-            >
-                {minusIcon}
-            </button>
-            <button
-                className="fixed bottom-2 inset-x-0 left-104 cursor-pointer border-5 border-[#e4f876] rounded-full
-                w-20 h-20 flex justify-center items-center text-5xl"
-                onClick={() => {
-                    setBpm((current) => current - 10);
-                    clearTimer();
-                    startTimer();
-                }}
-            >
-                {fasterMinusIcon}
-            </button>
-            <button
-                className="fixed bottom-2 inset-x-0 mx-auto cursor-pointer border-5 border-[#e4f876] rounded-full
-                w-20 h-20 flex justify-center items-center text-5xl"
-                onClick={toggleTimer}
-            >
-                {isRunning ? pauseIcon : playIcon}︎
-            </button>
+            <div className="flex justify-center fixed bottom-2 inset-x-0 mx-auto">
+                <button
+                    className="cursor-pointer border-5 border-[#e4f876] rounded-full w-20 h-20 flex justify-center items-center"
+                    onClick={() => {
+                        setBpm((current) => current - 10);
+                        clearTimer();
+                        startTimer();
+                    }}
+                >
+                    {fasterMinusIcon}
+                </button>
+                <button
+                    className="cursor-pointer border-5 border-[#e4f876] rounded-full w-20 h-20 flex justify-center items-center"
+                    onClick={() => {
+                        setBpm((current) => current - 1);
+                        clearTimer();
+                        startTimer();
+                    }}
+                >
+                    {minusIcon}
+                </button>
+                <button
+                    className="cursor-pointer border-5 border-[#e4f876] rounded-full w-20 h-20 flex justify-center items-center"
+                    onClick={toggleTimer}
+                >
+                    {isRunning ? pauseIcon : playIcon}︎
+                </button>
+                <button
+                    className="cursor-pointer border-5 border-[#e4f876] rounded-full w-20 h-20 flex justify-center items-center"
+                    onClick={() => {
+                        setBpm((current) => current + 1);
+                        clearTimer();
+                        startTimer();
+                    }}
+                >
+                    {plusIcon}
+                </button>
+                <button
+                    className="cursor-pointer border-5 border-[#e4f876] rounded-full w-20 h-20 flex justify-center items-center"
+                    onClick={() => {
+                        setBpm((current) => current + 10);
+                        clearTimer();
+                        startTimer();
+                    }}
+                >
+                    {fasterPlusIcon}
+                </button>
+            </div>
         </>
     );
 }
