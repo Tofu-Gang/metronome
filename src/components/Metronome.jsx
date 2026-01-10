@@ -1,4 +1,4 @@
-import trapezoid from "../assets/lichoblběžník.png";
+import trapezoid from "/lichoblběžník.png";
 import { useState, useCallback, useEffect } from "react";
 // https://justinmahar.github.io/react-use-precision-timer/?path=/docs/home--docs
 import { useTimer } from "react-use-precision-timer";
@@ -10,7 +10,7 @@ import playIcon from "../icons/play.jsx";
 import pauseIcon from "../icons/pause.jsx";
 // https://www.joshwcomeau.com/react/announcing-use-sound-react-hook/
 import useSound from 'use-sound';
-import clickSound from "../assets/click.mp3";
+import clickSound from "/click.mp3";
 import BpmButton from "./BpmButton.jsx";
 import Dot from "./Dot.jsx";
 
