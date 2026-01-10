@@ -71,8 +71,8 @@ function Metronome() {
                     origin-bottom rounded-xl mb-1 ${isRunning ? armPositionLookup[armPositionIndex] : ""} 
                     transition duration-${Math.floor(60000 / bpm)} ease-linear`}
                 ></div>
-                <Dot leftMargin={"calc(50%-230px)"} hidden={leftDotHidden} />
-                <Dot leftMargin={"calc(50%+230px)"} hidden={rightDotHidden} />
+                <Dot horizontalPosition={"calc(50% - 230px)"} hidden={leftDotHidden} />
+                <Dot horizontalPosition={"calc(50% + 230px)"} hidden={rightDotHidden} />
             </div>
             <div className="flex justify-center fixed bottom-2 inset-x-0 mx-auto">
                 <BpmButton onClick={() => changeBpm(-10)} icon={fasterMinusIcon} />

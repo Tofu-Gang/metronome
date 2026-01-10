@@ -1,7 +1,18 @@
-function Dot({ leftMargin, hidden }) {
+function Dot({ horizontalPosition, hidden }) {
     return (
         <div
-            className={`absolute top-[calc(50%-75px)] left-[${leftMargin}] w-3.5 h-3.5 bg-[#e4f876] rounded ${hidden ? "hidden" : ""}`}>
+            style={{
+                position: "absolute",
+                left: `${horizontalPosition}`,
+                top: "calc(50% - 75px)",
+                transform: "translateX(-50%)",
+                width: "12px",
+                height: "12px",
+                background: "#e4f876",
+                borderRadius: "30%",
+                display: hidden ? "none" : "block"
+            }}
+        >
         </div>
     );
 }
