@@ -1,17 +1,7 @@
 function Dot({ horizontalPosition, hidden }) {
     return (
         <div
-            style={{
-                position: "absolute",
-                left: `${horizontalPosition}`,
-                top: "calc(50% - 75px)",
-                transform: "translateX(-50%)",
-                width: "12px",
-                height: "12px",
-                background: "#e4f876",
-                borderRadius: "30%",
-                display: hidden ? "none" : "block"
-            }}
+            className={`absolute ${horizontalPosition}-1/23 top-12/30 w-3 h-3 bg-[#e4f876] rounded ${hidden && "hidden"}`}
         >
         </div>
     );

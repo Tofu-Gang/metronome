@@ -63,16 +63,16 @@ function Metronome() {
 
     return (
         <>
-            <div className="fixed bottom-22 inset-x-0 mx-auto max-w-lg">
+            <div className="absolute bottom-22 inset-x-0 mx-auto max-w-lg">
                 <h1 className="text-9xl text-center text-[#e4f876] font-[Rubik]">{bpm}</h1>
                 <img src={trapezoid} alt="An's trapezoid"/>
                 <div
-                    className={`fixed bottom-22 inset-x-0 mx-auto inline-block w-3.5 h-112.5 bg-[#e4f876] 
+                    className={`absolute bottom-0 inset-x-0 mx-auto inline-block w-1/36 h-5/8 bg-[#e4f876] 
                     origin-bottom rounded-xl mb-1 ${isRunning ? armPositionLookup[armPositionIndex] : ""} 
                     transition duration-${Math.floor(60000 / bpm)} ease-linear`}
                 ></div>
-                <Dot horizontalPosition={"calc(50% - 230px)"} hidden={leftDotHidden} />
-                <Dot horizontalPosition={"calc(50% + 230px)"} hidden={rightDotHidden} />
+                <Dot horizontalPosition={"left"} hidden={leftDotHidden} />
+                <Dot horizontalPosition={"right"} hidden={rightDotHidden} />
             </div>
             <div className="flex justify-center fixed bottom-2 inset-x-0 mx-auto">
                 <BpmButton onClick={() => changeBpm(-10)} icon={fasterMinusIcon} />
