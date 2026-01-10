@@ -63,7 +63,7 @@ function Metronome() {
 
     return (
         <>
-            <div className="absolute bottom-22 inset-x-0 mx-auto max-w-lg">
+            <div className="absolute bottom-19 inset-x-0 mx-auto max-w-lg">
                 <h1 className="text-9xl text-center text-[#e4f876] font-[Rubik]">{bpm}</h1>
                 <img src={trapezoid} alt="An's trapezoid"/>
                 <div
@@ -74,11 +74,11 @@ function Metronome() {
                 <Dot horizontalPosition={"left"} hidden={leftDotHidden} />
                 <Dot horizontalPosition={"right"} hidden={rightDotHidden} />
             </div>
-            <div className="flex justify-center fixed bottom-2 inset-x-0 mx-auto">
+            <div className="flex justify-center fixed bottom-1 inset-x-0 mx-auto">
                 <BpmButton onClick={() => changeBpm(-10)} icon={fasterMinusIcon} />
                 <BpmButton onClick={() => changeBpm(-1)} icon={minusIcon} />
                 <button
-                    className="cursor-pointer border-5 border-[#e4f876] rounded-full w-20 h-20 flex justify-center items-center"
+                    className="cursor-pointer border-5 border-[#e4f876] rounded-full size-fit p-2 m-1 flex justify-center items-center"
                     onClick={toggleTimer}
                 >
                     {isRunning ? pauseIcon : playIcon}

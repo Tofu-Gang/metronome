@@ -4,8 +4,8 @@ const minusIcon = <>
     {/*License: PD. Made by stephenhutchings: https://github.com/stephenhutchings/typicons.font*/}
     <svg
         fill="#e4f876"
-        width="50px"
-        height="50px"
+        width="40px"
+        height="40px"
         viewBox="0 0 24 24"
         version="1.2"
         baseProfile="tiny"

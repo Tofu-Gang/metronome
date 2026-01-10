@@ -11,8 +11,8 @@ const playIcon = <>
         x="0px" y="0px"
         viewBox="0 0 330 330"
         xmlSpace="preserve"
-        width="50px"
-        height="50px"
+        width="40px"
+        height="40px"
         className="pl-1"
     >
         <path

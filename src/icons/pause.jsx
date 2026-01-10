@@ -2,8 +2,8 @@
 const pauseIcon = <>
     {/*License: CC Attribution. Made by game-icons.net: https://game-icons.net/*/}
     <svg
-        width="50px"
-        height="50px"
+        width="40px"
+        height="40px"
         viewBox="0 0 512 512"
         xmlns="http://www.w3.org/2000/svg"
     >

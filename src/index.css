@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @source inline("duration-{200..1500..1}");
-@source inline("left");
-@source inline("right");
+@source inline("left-1/23");
+@source inline("right-1/23");
 
 body {
     @apply bg-[#00191b];
