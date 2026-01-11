@@ -11,7 +11,7 @@ import pauseIcon from "../icons/pause.jsx";
 // https://www.joshwcomeau.com/react/announcing-use-sound-react-hook/
 import useSound from 'use-sound';
 import clickSound from "/click.mp3";
-import BpmButton from "./BpmButton.jsx";
+import Button from "./Button.jsx";
 import Dot from "./Dot.jsx";
 
 function Metronome() {
@@ -75,16 +75,11 @@ function Metronome() {
                 <Dot horizontalPosition={"right"} hidden={rightDotHidden} />
             </div>
             <div className="flex justify-center fixed bottom-1 inset-x-0 mx-auto">
-                <BpmButton onClick={() => changeBpm(-10)} icon={fasterMinusIcon} />
-                <BpmButton onClick={() => changeBpm(-1)} icon={minusIcon} />
-                <button
-                    className="cursor-pointer border-5 border-[#e4f876] rounded-full size-fit p-2 m-1 flex justify-center items-center"
-                    onClick={toggleTimer}
-                >
-                    {isRunning ? pauseIcon : playIcon}
-                </button>
-                <BpmButton onClick={() => changeBpm(1)} icon={plusIcon} />
-                <BpmButton onClick={() => changeBpm(10)} icon={fasterPlusIcon} />
+                <Button onClick={() => changeBpm(-10)} icon={fasterMinusIcon} />
+                <Button onClick={() => changeBpm(-1)} icon={minusIcon} />
+                <Button onClick={toggleTimer} icon={isRunning ? pauseIcon : playIcon} />
+                <Button onClick={() => changeBpm(1)} icon={plusIcon} />
+                <Button onClick={() => changeBpm(10)} icon={fasterPlusIcon} />
             </div>
         </>
     );

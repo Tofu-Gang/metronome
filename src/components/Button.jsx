@@ -1,4 +1,4 @@
-function BpmButton({onClick, icon}) {
+function Button({onClick, icon}) {
     return (
         <button
             className="cursor-pointer border-5 border-[#e4f876] rounded-full size-fit m-1 p-2 flex justify-center items-center"
@@ -9,4 +9,4 @@ function BpmButton({onClick, icon}) {
     );
 }
 
-export default BpmButton;
+export default Button;
