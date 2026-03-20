@@ -12,7 +12,6 @@ import pauseIcon from "../icons/pause.jsx";
 import useSound from 'use-sound';
 import clickSound from "/click.mp3";
 import Button from "./Button.jsx";
-import Dot from "./Dot.jsx";
 
 function Metronome() {
     const armPositionLookup = ["-rotate-30", "rotate-30"];
@@ -62,26 +61,28 @@ function Metronome() {
     }
 
     return (
-        <>
-            <div className="absolute bottom-19 inset-x-0 mx-auto max-w-lg">
-                <h1 className="text-9xl text-center text-[#e4f876] font-[Rubik]">{bpm}</h1>
-                <img src={trapezoid} alt="An's trapezoid"/>
+        <div className="flex flex-col items-center">
+            <div className="flex items-center justify-center mt-10 mb-4">
+                <h1 className="text-8xl sm:text-9xl text-[#e4f876] font-[Rubik]">{bpm}</h1>
+            </div>
+            <div className="relative">
+                <img className="max-w-80 sm:max-w-lg" src={trapezoid} alt="An's trapezoid"/>
                 <div
-                    className={`absolute bottom-0 inset-x-0 mx-auto inline-block w-1/36 h-5/8 bg-[#e4f876] 
+                    className={`absolute bottom-0 inset-x-0 mx-auto w-3 sm:w-4 h-3/4 bg-[#e4f876] 
                     origin-bottom rounded-xl mb-1 ${isRunning ? armPositionLookup[armPositionIndex] : ""} 
                     transition duration-${Math.floor(60000 / bpm)} ease-linear`}
                 ></div>
-                <Dot horizontalPosition={"left"} hidden={leftDotHidden} />
-                <Dot horizontalPosition={"right"} hidden={rightDotHidden} />
+                <div className={`absolute top-1/4 left-1/36 size-3 sm:size-4 bg-[#e4f876] rounded ${leftDotHidden && "hidden"}`} />
+                <div className={`absolute top-1/4 right-1/36 size-3 sm:size-4 bg-[#e4f876] rounded ${rightDotHidden && "hidden"}`} />
             </div>
-            <div className="flex justify-center fixed bottom-1 inset-x-0 mx-auto">
+            <div className="flex justify-center mt-4">
                 <Button onClick={() => changeBpm(-10)} icon={fasterMinusIcon} />
                 <Button onClick={() => changeBpm(-1)} icon={minusIcon} />
                 <Button onClick={toggleTimer} icon={isRunning ? pauseIcon : playIcon} />
                 <Button onClick={() => changeBpm(1)} icon={plusIcon} />
                 <Button onClick={() => changeBpm(10)} icon={fasterPlusIcon} />
             </div>
-        </>
+        </div>
     );
 }
 
